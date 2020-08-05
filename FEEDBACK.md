@@ -1,0 +1,4 @@
+# Part One - Intro to OO
+Classes look good! The files are a little large because of your notes but if they're helpful keep them for now! One thing you'll want to start doing is putting the attr's at the top of the class, before the initialize. It's convention for readability. 
+I like that you make sure the age is an integer in the patient, as well as the string. The string is less essential since when we get that information from the CLI, it will already be a string. 
+Also really happy to see you testing in the run.rb file. In your else case (if they don't write doctor or patient), if you want it to start the app over again, just write run to invoke the method again.
