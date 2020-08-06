@@ -1,29 +1,30 @@
 require 'pry'
 
-# Doctor#initialize: should initialize with a name (string), specialty (string), and years (integer). Years should default to 1
-# Doctor#name: should return the Doctor’s name, should be able to change its name after creation
-# Doctor#speciality: should return the Doctor’s speciality, should NOT be able to change its speciality after creation
-# Doctor#years: should return the Doctor’s years, should be able to change its years after creation
 
 class Doctor 
+    attr_accessor :name, :years
+    attr_reader :specialty
 
-    #initalize Doctor class with three inputs
+    @@all = []
+
     def initialize(name, specialty, years = 1)
         @name = name
         @specialty = specialty
         @years = years
+        @@all << self
     end 
 
-    #enable both writing and reading capabilities to the 
-    #name and years instance variables
-    attr_accessor :name, :years
+    def self.all 
+        @@all
+    end 
 
-    #allow only reading/getter attributes to the specality
-    #instance variable
-    attr_reader :specialty
+    def greet 
+        puts "Welcome to the hospital! My name #{@name} and I will be taking care of you."
+    end
 
+    def self.find_by_speciality(specialty_input)
+        self.all.find do |doctor|
+            doctor.specialty == specialty_input
+        end 
+    end 
 end 
-
-charlie = Doctor.new('Charlie', 'Heart Surgeon', 10)
-
-binding.pry

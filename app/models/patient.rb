@@ -1,21 +1,32 @@
 require 'pry'
 
-# Patient#initialize: should initialize with a name (string) and age (integer)
-# Patient#name: should return the Patient’s name, should be able to change its name after creation
-# Patient#age: should return the Patient’s age, should be able to change its age after creation
-
 class Patient 
+    attr_accessor :name, :age 
+    attr_reader :impatience
 
-    #initializing class with a name and an age
+    @@all = []
+
     def initialize(name, age)
-        @name = name.to_s
+        @name = name
         @age = age.to_i
+        @impatience = 0
+        @@all << name
     end 
 
-    #use the accessor Macro to allow both writing and 
-    #reading capability of both instance variables.
-    attr_accessor :name, :age
+    def inquire_appt_ready
+        puts "The doctor will be ready soon."
+        increase_impatience
+    end 
+
+    def self.all 
+        @@all
+    end
+
+    private 
+
+    def increase_impatience
+        @impatience += 1
+    end 
+
 end 
 
-mar = Patient.new('Mar', 22)
-binding.pry
