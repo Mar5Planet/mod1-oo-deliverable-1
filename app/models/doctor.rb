@@ -10,7 +10,7 @@ class Doctor
     def initialize(name, specialty, years = 1)
         @name = name
         @specialty = specialty
-        @years = years
+        @years = years.to_i
         @@all << self
     end 
 
@@ -27,4 +27,27 @@ class Doctor
             doctor.specialty == specialty_input
         end 
     end 
+
+    def patients 
+        Patient.all.select do |patient|
+            patient.doctor == self 
+        end
+    end 
+
+    def discharge_patient(patient)
+        if patient.doctor == self 
+            patient.doctor = nil 
+            "#{patient.name} has successfully been discharged"
+        else "You cannot discharge a patient that is not yours"
+        end
+    end 
+
+    def transfer_patient(patient, new_doctor)
+        if patient.doctor == self 
+            patient.doctor = new_doctor
+            "#{patient.name} has officially been transferred to the care of #{new_doctor.name}."
+        else "You cannot transfer a patient that is not yours"
+        end
+    end 
 end 
+

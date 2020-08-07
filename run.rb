@@ -13,13 +13,15 @@ def run
         specialty= gets.chomp
         puts "What are your years of experience?"
         years= gets.chomp
-        return doctor = Doctor.new(name, specialty, years)
+        doctor = Doctor.new(name, specialty, years)
     elsif individual == "patient"
         puts "Hello patient, what is your name?"
         name= gets.chomp
         puts "How old are you?"
         age= gets.chomp
-        return patient= Patient.new(name, age)
+        puts "Who is your doctor?"
+        doctor = gets.chomp
+        patient= Patient.new(name, age, doctor)
     else
         puts "Sorry, please try again"
     end 
@@ -28,4 +30,3 @@ def run
 end
 
 run
-binding.pry
