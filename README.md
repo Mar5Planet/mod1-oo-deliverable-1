@@ -1,13 +1,18 @@
-# mod1-oo-deliverable-3
+# mod1-oo-deliverable-4
 
-Practice Deliverables
-
-A Patient should belong to a Doctor
-A Doctor can have many Patients
+Associations:
+A Patient has many Doctors through Appointment
+A Doctor has many Patients through Appointment
+An Appointment belongs to a Doctor and a Patient
+Appointment
+Appointment#initialize… intentionally vague. What will it need to be initialized?
+Appointment.all should return a list of all appointment instances 
 Patient
-Patient#doctor should return the Doctor instance for this patient
-Patient#change_doctors should take a doctor instance and update the patient’s doctor
+Note: you can comment out your #doctor and #changes_doctors methods
+Patient#appointments should return a list of Appointment instances associated with this patient 
+Patient#doctors should return a list of Doctor instances associated with this patient through Appointments. Try to ensure this list does not include duplicates.
+Patient#create_appointment should create a new appointment between the current patient and a specified doctor
 Doctor
-Doctor#patients should return an array of all the Patients for that doctor
-Doctor#dischange_patient should set a patient’s doctor to nil, only if the patient belongs to the current doctor
-Doctor#transfer_patient should change a patient’s doctor to another doctor. This should only work if the patient belongs to the current doctor.
+Note: you can comment out your #patients, #dischange_patient, and #transfer_patient methods
+Doctor#appointments should return a list of Appointment instances associated with this doctor 
+Doctor#patients should return a list of Patient instances associated with this patient through Appointments. Try to ensure this list does not include duplicates.
